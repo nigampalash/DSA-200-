@@ -1,0 +1,32 @@
+import java.util.*;
+
+class Solution {
+    
+    public List<List<String>> groupAnagrams(String[] strs) {
+        
+        Map<String, List<String>> map = new HashMap<>();
+        
+        for (String str : strs) {
+            
+            // Frequency array for 26 lowercase letters
+            int[] freq = new int[26];
+            
+            for (char ch : str.toCharArray()) {
+                freq[ch - 'a']++;
+            }
+            
+            // Build unique key
+            StringBuilder key = new StringBuilder();
+            
+            for (int count : freq) {
+                key.append('#').append(count);
+            }
+            
+            // Store grouped anagrams
+            map.computeIfAbsent(key.toString(),
+                    k -> new ArrayList<>()).add(str);
+        }
+        
+        return new ArrayList<>(map.values());
+    }
+}
