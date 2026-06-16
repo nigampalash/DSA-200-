@@ -1,21 +1,26 @@
 🚀 DSA-500 Journey | LeetCode Problem Solving Repository
 
+
 Welcome to my Data Structures & Algorithms repository!
 
 This repository contains my solutions to 500+ DSA problems solved as part of my coding interview preparation journey. The primary goal is to strengthen problem-solving skills, master data structures and algorithms, and prepare for top product-based companies and coding interviews.
 
 🎯 Goal
+
 Solve 500+ LeetCode Problems
 Focus heavily on Medium and Hard problems
 Improve problem-solving speed and optimization skills
 Master interview patterns used by top companies
 Build consistency through daily practice
+
 📊 Current Progress
+
 Difficulty	Target
 Easy	Foundation Building
 Medium	Major Focus
 Hard	Major Focus
 Total Goal	500 Problems
+
 📂 Repository Structure
 
 Each file name follows a simple naming convention:
@@ -57,7 +62,9 @@ Example:
 arraye  → Array Easy
 arraym  → Array Medium
 arrayh  → Array Hard
+
 🧠 Topics Covered
+
 Arrays
 Strings
 Linked Lists
@@ -79,8 +86,9 @@ Bit Manipulation
 Tries
 Segment Trees
 Union Find (DSU)
+
 💻 Language Used
-C++
+JAVA
 
 All solutions are implemented using modern C++ with a focus on:
 
@@ -88,6 +96,7 @@ Readability
 Efficiency
 Interview-friendly approaches
 Optimized Time & Space Complexity
+
 📈 Learning Strategy
 Phase 1
 Easy Problems
@@ -100,6 +109,7 @@ Phase 3
 Hard Problems
 Advanced Algorithms
 Competitive Problem Solving
+
 🏆 Target Companies
 
 This repository is part of my preparation for:
@@ -114,7 +124,9 @@ Uber
 Adobe
 Salesforce
 Walmart Global Tech
+
 🔥 Consistency Rule
+
 Solve.
 Learn.
 Optimize.
