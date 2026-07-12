@@ -1,0 +1,105 @@
+class Solution {
+    public List<List<String>> findLadders(String beginWord, String endWord, List<String> wordList) {
+        List<List<String>> result = new ArrayList<>();
+        Set<String> dict = new HashSet<>(wordList);
+
+        if (!dict.contains(endWord)) {
+            return result;
+        }
+
+        Map<String, List<String>> graph = new HashMap<>();
+        Map<String, Integer> distance = new HashMap<>();
+
+        bfs(beginWord, endWord, dict, graph, distance);
+
+        List<String> path = new ArrayList<>();
+        path.add(beginWord);
+        dfs(beginWord, endWord, graph, distance, path, result);
+
+        return result;
+    }
+
+    private void bfs(String beginWord, String endWord, Set<String> dict,
+                     Map<String, List<String>> graph,
+                     Map<String, Integer> distance) {
+
+        Queue<String> queue = new LinkedList<>();
+        queue.offer(beginWord);
+        distance.put(beginWord, 0);
+
+        for (String word : dict) {
+            graph.put(word, new ArrayList<>());
+        }
+        graph.put(beginWord, new ArrayList<>());
+
+        while (!queue.isEmpty()) {
+            int size = queue.size();
+            boolean found = false;
+
+            for (int i = 0; i < size; i++) {
+                String current = queue.poll();
+                int currDist = distance.get(current);
+
+                for (String next : getNeighbors(current, dict)) {
+                    graph.get(current).add(next);
+
+                    if (!distance.containsKey(next)) {
+                        distance.put(next, currDist + 1);
+
+                        if (next.equals(endWord)) {
+                            found = true;
+                        } else {
+                            queue.offer(next);
+                        }
+                    }
+                }
+            }
+
+            if (found) {
+                break;
+            }
+        }
+    }
+
+    private void dfs(String current, String endWord,
+                     Map<String, List<String>> graph,
+                     Map<String, Integer> distance,
+                     List<String> path,
+                     List<List<String>> result) {
+
+        if (current.equals(endWord)) {
+            result.add(new ArrayList<>(path));
+            return;
+        }
+
+        for (String next : graph.get(current)) {
+            if (distance.get(next) == distance.get(current) + 1) {
+                path.add(next);
+                dfs(next, endWord, graph, distance, path, result);
+                path.remove(path.size() - 1);
+            }
+        }
+    }
+
+    private List<String> getNeighbors(String word, Set<String> dict) {
+        List<String> neighbors = new ArrayList<>();
+        char[] chars = word.toCharArray();
+
+        for (int i = 0; i < chars.length; i++) {
+            char original = chars[i];
+
+            for (char c = 'a'; c <= 'z'; c++) {
+                chars[i] = c;
+                String next = new String(chars);
+
+                if (dict.contains(next) && !next.equals(word)) {
+                    neighbors.add(next);
+                }
+            }
+
+            chars[i] = original;
+        }
+
+        return neighbors;
+    }
+}
